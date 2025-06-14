@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtred Cars</title>
+</head>
+<body>
+    <div>
+        <form method="GET">
+            <label for="category">Categories</label>
+            <select name="category">  
+                <option value="">All categories</option>
+                {% for category in categories  %}
+                    <option value="{{category.id}}">{{ category.type }}</option>
+                {% endfor %}
+            </select>     
+           
+            <label for="min price">Min price $</label>
+            <input type="number" name="min price" placeholder="0$" value="{{min_price}}">
+
+            <label for="max price">Max price $</label>
+            <input type="number" name="max price" placeholder="0$" value="{{max_price}}">
+
+            <label for="air condition">Air condition</label>
+            <select name="air condition">  
+                <option value="">not important</option>
+
+                <option value="Yes">Yes</option>
+                
+                <option value="No">No</option>
+            </select>     
+            
+            <label for="year">Year</label>
+            <input type="number" name="year" placeholder="2025" value="{{ year }}">
+
+            <label for="location">location</label>
+            <input type="text" name="location" placeholder="Kiev" value="{{ location }}">
+
+            <label for="start time">Start time</label>
+            <input type="date" name="start time" value="{{ start_time }}">
+
+            <label for="end time">End time</label>
+            <input type="date" name="end time" value="{{ end_time }}">
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div>
+        {% if cars %}
+        {% for car in cars %}
+            <p>{{car.name}}</p>
+            <p><img src="{{ car.image.url }}"></p>
+            <p>Price:{{car.price}}</p>
+            <p>Year:{{car.year}}</p>
+            <p>Type:{{car.type.type}}</p>
+            <p>Rating:{{car.rating}}</p>
+            <p>Transmission:{{car.transmission}}</p>
+            <p>Air_conditioning:{{car.air_conditioning}}</p>
+            {% endfor %}
+            {% else %}
+            <p>No cars found</p>
+            {% endif %}
+    </div>
+</body>
+</html>
