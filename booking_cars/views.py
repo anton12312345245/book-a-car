@@ -33,11 +33,11 @@ def main_filter(request):
     if year:
         cars = cars.filter(year__gte=year)
     if air_conditioning == 'Yes':
-        cars = cars.filter(air_condition=True)
+        cars = cars.filter(air_conditioning=True)
     elif air_conditioning == 'No':
-        cars = cars.filter(air_condition=False)
-    # if location:
-    #     cars = cars.filter(location=location)
+        cars = cars.filter(air_conditioning=False)
+    if location:
+        cars = cars.filter(location=location)
     if start_time and end_time:
         try:
             start_date = datetime.strptime(start_time, '%Y-%m-%d').date()
