@@ -50,21 +50,21 @@
     </div>
     <div class="car-grid">
         {% if cars %}
-        {% for car in cars %}
-        <div class="car">
-            <h2>{{car.name}}</h2>
-            <p><img src="{{ car.image.url }}"></p>
-            <p>Price:{{car.price}}</p>
-            <p>Year:{{car.year}}</p>
-            <p>Type:{{car.type.type}}</p>
-            <p>Rating:{{car.rating}}</p>
-            <p>Transmission:{{car.transmission}}</p>
-            <p>Air_conditioning:{{car.air_conditioning}}</p>
+            {% for car in cars %}
+                <div class="car">
+                    <h2>{{car.name}}</h2>
+                    <p><img src="{{ car.image.url }}"></p>
+                    <p>Price:{{car.price}}</p>
+                    <p>Year:{{car.year}}</p>
+                    <p>Type:{{car.type.type}}</p>
+                    <p>Rating:{{car.rating}}</p>
+                    <p>Transmission:{{car.transmission}}</p>
+                    <p>Air_conditioning:{{car.air_conditioning}}</p>
+                </div>
             {% endfor %}
-            {% else %}
+        {% else %}
             <p>No cars found</p>
-            {% endif %}
-        </div>
+        {% endif %}   
     </div>
 </body>
 </html>
