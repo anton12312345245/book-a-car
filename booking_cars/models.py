@@ -15,6 +15,7 @@ class Car(models.Model):
     transmission = models.CharField(max_length=100)
     air_conditioning = models.BooleanField()
     image = models.ImageField()
+    location = models.TextField(default='Kiev')
 
     def __str__(self):
         return self.name
@@ -24,7 +25,6 @@ class Car(models.Model):
 
 class Booking(models.Model):
     User = models.ForeignKey(User,on_delete=models.CASCADE,related_name='Bookings')
-    location = models.TextField()
     start_time = models.DateField()
     end_time = models.DateField()
     which_car = models.ForeignKey(Car,on_delete=models.CASCADE)

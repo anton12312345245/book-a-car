@@ -1,12 +1,14 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filtred Cars</title>
+    <link rel="stylesheet" href="{%static 'file1.css'%}">
 </head>
 <body>
-    <div>
+    <div class="filterform">
         <form method="GET">
             <label for="category">Categories</label>
             <select name="category">  
@@ -46,10 +48,11 @@
             <button type="submit">Search</button>
         </form>
     </div>
-    <div>
+    <div class="car-grid">
         {% if cars %}
         {% for car in cars %}
-            <p>{{car.name}}</p>
+        <div class="car">
+            <h2>{{car.name}}</h2>
             <p><img src="{{ car.image.url }}"></p>
             <p>Price:{{car.price}}</p>
             <p>Year:{{car.year}}</p>
@@ -61,6 +64,7 @@
             {% else %}
             <p>No cars found</p>
             {% endif %}
+        </div>
     </div>
 </body>
 </html>

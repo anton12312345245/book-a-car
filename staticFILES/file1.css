@@ -1,0 +1,65 @@
+body {
+    color: black;
+    background-color: beige;
+}
+
+.filterform {
+    display: flex; 
+    background-color: rgb(197, 197, 157);
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 10px;
+    max-width: 1000px;
+    box-shadow: 0 2px 8px;
+
+}
+
+.filterform label {
+    font-size: 20px;
+    font-family: 'Times New Roman';
+
+}
+
+.filterform input, .filterform select {
+    border-radius: 10px;
+    border: 1px solid rgb(142, 142, 110);
+    padding: 5px;
+}
+
+.filterform button{
+    border-radius: 10px;
+    border: 1px solid rgb(142, 142, 110);
+    padding: 5px;
+}
+
+
+.car-grid {
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    
+} 
+
+
+.car {
+    text-align: center;
+    border-radius: 10px;
+    background-color:  rgb(197, 197, 157);
+    padding:  10px;
+    transition: transform 0.2s;
+}
+
+
+
+
+.car img {
+    max-width: 100%;
+    
+}
+
+
+.car:hover {
+    transform: translateY(-5px);
+}
