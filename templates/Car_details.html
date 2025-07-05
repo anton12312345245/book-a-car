@@ -1,0 +1,35 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'file1.css'%}">
+    <title>Car details></title>
+</head>
+<body>
+    <h1>{{ car.name }}</h1>
+    <div class="car">
+        <p><img src="{{ car.image.url }}"></p>
+        <p>Price:{{car.price}}</p>
+        <p>Year:{{car.year}}</p>
+        <p>Type:{{car.type.type}}</p>
+        <p>Rating:{{car.rating}}</p>
+        <p>Transmission:{{car.transmission}}</p>
+        <p>Air_conditioning:{{car.air_conditioning}}</p>
+        <p>Location:{{ car.location }}</p>
+    </div>
+    {% if user.is_authenticated %}
+    <div>
+        <form method="post" action="{% url 'Book car' car.id %}">
+            {% csrf_token %}
+            <p>start time:<input type="date" name="start_time" required></p>
+            <p>end time:<input type="date" name="end_time" required></p>
+            <p><button type="submit">Book</button></p>
+        </form>
+    </div>
+    {% else %}
+    <p><a href="{% url 'login'  %}">Login</a> to book this car</p>
+    {% endif %}
+</body>
+</html>

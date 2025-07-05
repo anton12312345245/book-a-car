@@ -52,7 +52,7 @@
         {% if cars %}
             {% for car in cars %}
                 <div class="car">
-                    <h2>{{car.name}}</h2>
+                    <h2><a href="{% url 'Car details' car.id %}">{{car.name}}</a></h2>
                     <p><img src="{{ car.image.url }}"></p>
                     <p>Price:{{car.price}}</p>
                     <p>Year:{{car.year}}</p>
