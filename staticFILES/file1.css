@@ -58,3 +58,37 @@ body {
 .car:hover {
     transform: translateY(-5px);
 }
+
+
+.messages .error{
+    border: 1px solid red;
+    display: inline-block;
+}
+
+
+.messages .success{
+    border: 1px solid green;
+    display: inline-block;
+}
+
+
+.h1 {
+    text-align: center;
+}
+
+
+.content li:nth-child(odd){
+    background-color: white;
+}
+
+.content li:nth-child(even){
+    background-color: rgba(164, 109, 109, 0.306);
+
+}
+
+
+ol {
+    list-style-position: inside;
+    margin: 0;
+    padding-left: 0;
+}

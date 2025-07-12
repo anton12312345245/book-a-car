@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from booking_cars.models import Car,Category,Booking
 from datetime import datetime
 from django.db.models import Q
-
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 def get_info(request):
     cars = Car.objects.all()
@@ -70,20 +71,29 @@ def car_details(request,id):
     cars_id = Car.objects.get(id=id)
     return render(request=request,template_name='Car_details.html',context={'car': cars_id})
 
-
+@login_required
 def book_car(request,id):
     cars_id = Car.objects.get(id=id)
     if request.method=='POST':
         start_time = request.POST.get('start_time')
         end_time = request.POST.get('end_time')
         if start_time > end_time:
+            messages.error(request=request,message='End time can not be earlier than start time')
             return redirect('Car details',id=id)
         ocupated_car = Booking.objects.filter(start_time=start_time,end_time=end_time,which_car=cars_id)
         if ocupated_car.exists():
+            messages.error(request=request,message='This car is already booked')
             return redirect('Car details',id=id)
         Booking.objects.create(User=request.user,start_time=start_time,end_time=end_time,which_car=cars_id)
-        return redirect('cars')
+        messages.success(request=request,message='Car was booked successfuly')
+        return redirect('Booked cars')
     else:
         return redirect('Car details',id=id)
 
-    
+@login_required   
+def all_booked_cars(request):
+    user = request.user
+    booked_cars = Booking.objects.filter(User=user)
+    context = {'booked_cars':booked_cars}
+    return render(request=request,template_name='booked_cars.html',context=context)
+

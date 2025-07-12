@@ -11,7 +11,7 @@
     <h1>{{ car.name }}</h1>
     <div class="car">
         <p><img src="{{ car.image.url }}"></p>
-        <p>Price:{{car.price}}</p>
+        <p>Price:{{car.price}}$</p>
         <p>Year:{{car.year}}</p>
         <p>Type:{{car.type.type}}</p>
         <p>Rating:{{car.rating}}</p>
@@ -27,6 +27,13 @@
             <p>end time:<input type="date" name="end_time" required></p>
             <p><button type="submit">Book</button></p>
         </form>
+        {% if messages %}
+        <div class="messages"> 
+            {% for message in messages %}
+            <p class="{% if message.tags %}{{ message.tags }} {% endif %}">{{ message }}</p>
+            {% endfor %}
+        </div>
+            {% endif %}
     </div>
     {% else %}
     <p><a href="{% url 'login'  %}">Login</a> to book this car</p>

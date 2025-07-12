@@ -1,0 +1,23 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'file1.css'%}">
+    <title>All booked cars</title>
+</head>
+<body>
+    <h1 class="h1">Your booked cars</h1>
+    <ol class="content">
+        {% for car in booked_cars %}
+        <li>
+            <p>Car: {{ car.which_car.name }}</p>
+            <p>From: {{car.start_time}}</p>
+            <p>To: {{car.end_time}}</p>
+        </li>
+        {% endfor %}
+    </ol>
+    <p><a href="{% url 'cars' %}">Back to search</a></p>
+</body>
+</html>
